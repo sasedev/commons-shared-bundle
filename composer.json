@@ -1,0 +1,34 @@
+{
+	"name" : "sasedev/commons-shared-bundle",
+	"description" : "sdfsdf",
+	"version" : "1.0.0",
+	"require" : {
+		"php" : ">=5.5",
+		"symfony/http-kernel" : "~2.8|~3.0",
+		"symfony/config" : "~2.8|~3.0",
+		"symfony/dependency-injection" : "~2.8|~3.0",
+		"symfony/form" : "~2.8|~3.0",
+		"symfony/monolog-bridge" : "~2.8|~3.0",
+		"symfony/security" : "~2.8|~3.0",
+		"symfony/validator" : "~2.8|~3.0",
+		"doctrine/orm" : "^2.4.8",
+		"doctrine/doctrine-bundle" : "~1.4"
+	},
+	"license" : "MIT",
+	"keywords" : ["symfony2", "sasedev", "shared"],
+	"extra" : {
+		"branch-alias" : {
+			"dev-master" : "1.0.x-dev"
+		}
+	},
+	"autoload" : {
+		"psr-4" : {
+			"Sasedev\\Commons\\SharedBundle\\" : "src/Sasedev/Commons/SharedBundle"
+		}
+	},
+	"type" : "symfony-bundle",
+	"authors" : [ {
+		"name" : "Salah Abdelkader Seif Eddine",
+		"email" : "seif.salah@gmail.com"
+	} ]
+}
