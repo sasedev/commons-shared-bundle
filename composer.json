@@ -1,7 +1,6 @@
 {
 	"name" : "sasedev/commons-shared-bundle",
-	"description" : "sdfsdf",
-	"version" : "1.0.0",
+	"description" : "Commons Shared Bundle for Symfony2",
 	"require" : {
 		"php" : ">=5.5",
 		"symfony/http-kernel" : "~2.8|~3.0",
