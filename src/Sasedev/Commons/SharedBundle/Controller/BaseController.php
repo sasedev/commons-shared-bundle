@@ -12,7 +12,6 @@ use Symfony\Component\DependencyInjection\ContainerAwareTrait;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormFactory;
 use Symfony\Component\Form\FormInterface;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\Session;
@@ -101,16 +100,6 @@ class BaseController implements ContainerAwareInterface
 	public function getRouter()
 	{
 		return $this->get('router');
-	}
-
-	/**
-	 * Get Request
-	 *
-	 * @return Request
-	 */
-	public function getRequest()
-	{
-		return $this->get('request');
 	}
 
 	/**
