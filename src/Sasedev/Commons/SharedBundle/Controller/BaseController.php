@@ -30,6 +30,44 @@ use Symfony\Component\Validator\Validator;
 class BaseController implements ContainerAwareInterface
 {
 
+	/**
+	 *
+	 * @var array $twig_vars
+	 */
+	private $twig_vars = array();
+
+	/**
+	 *
+	 * @var array
+	 */
+	private $head_metas = array();
+
+	/**
+	 *
+	 * @var array
+	 */
+	private $head_links = array();
+
+	/**
+	 *
+	 * @var array $head_scripts
+	 */
+	private $head_scripts = array();
+
+	/**
+	 *
+	 * @var string $page_title
+	 */
+	private $page_title;
+
+	/**
+	 *
+	 * @var array $body_scripts
+	 */
+	private $body_scripts = array();
+
+
+
 	use ContainerAwareTrait;
 
 	/**
@@ -265,9 +303,9 @@ class BaseController implements ContainerAwareInterface
 	 *
 	 * @return ObjectManager
 	 */
-	public function getEntityManager()
+	public function getEntityManager($name = null)
 	{
-		$entityManager = $this->getDoctrine()->getManager();
+		$entityManager = $this->getDoctrine()->getManager($name);
 		if (!$entityManager->isOpen()) {
 			$entityManager = $entityManager->create($entityManager->getConnection(), $entityManager->getConfiguration());
 		}
@@ -413,4 +451,267 @@ class BaseController implements ContainerAwareInterface
 
 		return strtr($string, $table);
 	}
+
+	/**
+	 * Get $twig_vars
+	 *
+	 * @return array
+	 */
+	public function getTwigVars()
+	{
+
+		return $this->twig_vars;
+
+	}
+
+	/**
+	 * Set $twig_vars;
+	 *
+	 * @param array $twig_vars
+	 *
+	 * @return BaseController $this
+	 */
+	public function setTwigVars($twig_vars)
+	{
+
+		$this->twig_vars = $twig_vars;
+
+		return $this;
+
+	}
+
+	/**
+	 * Add $twig_var;
+	 *
+	 * @param mixed $twig_vars
+	 *
+	 * @return BaseController $this
+	 */
+	public function addTwigVar($twig_var)
+	{
+
+		$this->twig_vars[] = $twig_var;
+
+		return $this;
+
+	}
+
+	/**
+	 * Get $head_metas
+	 *
+	 * @return array
+	 */
+	public function getHeadMetas()
+	{
+
+		return $this->head_metas;
+
+	}
+
+	/**
+	 * Set $head_metas
+	 *
+	 * @param array $head_metas
+	 *
+	 * @return BaseController $this
+	 */
+	public function setHeadMetas($head_metas)
+	{
+
+		$this->head_metas = $head_metas;
+
+		$this->twig_vars['head_metas'] = $this->head_metas;
+
+		return $this;
+
+	}
+
+	/**
+	 * Add $head_meta;
+	 *
+	 * @param mixed $head_meta
+	 *
+	 * @return BaseController $this
+	 */
+	public function addHeadMeta($head_meta)
+	{
+
+		$this->head_metas[] = $head_meta;
+
+		$this->twig_vars['head_metas'] = $this->head_metas;
+
+		return $this;
+
+	}
+
+	/**
+	 * Get $head_links
+	 *
+	 * @return array
+	 */
+	public function getHeadLinks()
+	{
+
+		return $this->head_links;
+
+	}
+
+	/**
+	 * Set $head_links
+	 *
+	 * @param array $head_links
+	 *
+	 * @return BaseController $this
+	 */
+	public function setHeadLinks($head_links)
+	{
+
+		$this->head_links = $head_links;
+
+		$this->twig_vars['head_links'] = $this->head_links;
+
+		return $this;
+
+	}
+
+	/**
+	 * Add $head_link;
+	 *
+	 * @param mixed $head_link
+	 *
+	 * @return BaseController $this
+	 */
+	public function addHeadLink($head_link)
+	{
+
+		$this->head_links[] = $head_link;
+
+		$this->twig_vars['head_links'] = $this->head_links;
+
+		return $this;
+
+	}
+
+	/**
+	 * Get $head_scripts
+	 *
+	 * @return array
+	 */
+	public function getHeadScripts()
+	{
+
+		return $this->head_scripts;
+
+	}
+
+	/**
+	 * Set $head_scripts
+	 *
+	 * @param array $head_scripts
+	 *
+	 * @return BaseController $this
+	 */
+	public function setHeadScripts($head_scripts)
+	{
+
+		$this->head_scripts = $head_scripts;
+
+		$this->twig_vars['head_scripts'] = $this->head_scripts;
+
+		return $this;
+
+	}
+
+	/**
+	 * Add $head_script;
+	 *
+	 * @param mixed $head_script
+	 *
+	 * @return BaseController $this
+	 */
+	public function addHeadScript($head_script)
+	{
+
+		$this->head_scripts[] = $head_script;
+
+		$this->twig_vars['head_scripts'] = $this->head_scripts;
+
+		return $this;
+
+	}
+
+	/**
+	 *
+	 * @return unknown_type
+	 */
+	public function getPageTitle()
+	{
+
+		return $this->page_title;
+
+	}
+
+	/**
+	 *
+	 * @param string $page_title
+	 */
+	public function setPageTitle($page_title)
+	{
+
+		$this->page_title = $page_title;
+
+		$this->twig_vars['page_title'] = $this->page_title;
+
+		return $this;
+
+	}
+
+	/**
+	 * Get $body_scripts
+	 *
+	 * @return array
+	 */
+	public function getBodyScripts()
+	{
+
+		return $this->body_scripts;
+
+	}
+
+	/**
+	 * Set $body_scripts
+	 *
+	 * @param array $body_scripts
+	 *
+	 * @return BaseController $this
+	 */
+	public function setBodyScripts($body_scripts)
+	{
+
+		$this->body_scripts = $body_scripts;
+
+		$this->twig_vars['body_scripts'] = $this->body_scripts;
+
+		return $this;
+
+	}
+
+	/**
+	 * Add $body_script;
+	 *
+	 * @param mixed $body_script
+	 *
+	 * @return BaseController $this
+	 */
+	public function addBodyScript($body_script)
+	{
+
+		$this->body_scripts[] = $body_script;
+
+		$this->twig_vars['body_scripts'] = $this->body_scripts;
+
+		return $this;
+
+	}
+
 }

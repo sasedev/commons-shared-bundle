@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+{%block html%}<html {%block html_attributes%}{%endblock html_attributes%}>{%block html_content%}{%block head%}
+	<head>{%block head_content%}{%block head_metas%}
+{%if head_metas is defined%}{%for meta in head_metas%}{% if meta.elements | length != 0 %}
+		<meta {%for element in meta.elements%}{{element.key}}="{{element.value}}" {% endfor %}/>
+{%endif%}{%endfor%}{%endif%}{%endblock head_metas%}
+{%block head_links%}{%if head_links is defined%}{%for link in head_links%}{% if link.elements | length != 0 %}
+		<link {%for element in link.elements%}{{element.key}}="{%if element.isAsset%}{{absolute_url(asset(element.value))}}{%else%}{{element.value}}{%endif%}" {% endfor %}/>
+{%endif%}{%endfor%}{%endif%}{%endblock head_links%}
+{%block head_scripts%}
+{%endblock head_scripts%}
+{%endblock head_content%}
+	</head>{%endblock head%}{%block body%}
+	<body {%block body_attributes%}{%endblock body_attributes%}>{%block body_content%}
+{%block body_content_main%}
+{%endblock body_content_main%}
+{%block body_scripts%}
+{%endblock body_scripts%}
+{%endblock body_content%}
+	</body>
+{%endblock body%}
+{%endblock html_content%}
+{%endblock html%}
+</html>
+{%endblock html%}
