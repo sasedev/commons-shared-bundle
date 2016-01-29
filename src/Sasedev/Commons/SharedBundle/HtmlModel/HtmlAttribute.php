@@ -6,7 +6,7 @@ namespace Sasedev\Commons\SharedBundle\HtmlModel;
  *
  * @author sasedev <seif.salah@gmail.com>
  */
-class AttributeElement
+class HtmlAttribute
 {
 
 	/**
@@ -23,22 +23,15 @@ class AttributeElement
 
 	/**
 	 *
-	 * @var boolean $isAsset
-	 */
-	private $isAsset;
-
-	/**
-	 *
 	 * @param string $key
 	 * @param string $value
 	 * @param boolean $isAsset
 	 */
-	public function __construct($key, $value, $isAsset = false)
+	public function __construct($key, $value)
 	{
 
 		$this->key = $key;
 		$this->value = $value;
-		$this->isAsset = $isAsset;
 
 	}
 
@@ -59,7 +52,7 @@ class AttributeElement
 	 *
 	 * @param string $key
 	 *
-	 * @return AttributeElement $this
+	 * @return HtmlAttribute $this
 	 */
 	public function setKey($key)
 	{
@@ -87,7 +80,7 @@ class AttributeElement
 	 *
 	 * @param string $value
 	 *
-	 * @return AttributeElement $this
+	 * @return HtmlAttribute $this
 	 */
 	public function setValue($value)
 	{
@@ -99,32 +92,11 @@ class AttributeElement
 	}
 
 	/**
-	 * Get $isAsset
-	 *
-	 * @return boolean
+	 * Default string representation
 	 */
-	public function getIsAsset()
+	public function __toString()
 	{
-
-		return $this->isAsset;
-
+		return $this->key.'="'.$this->value.'"';
 	}
-
-	/**
-	 * Set $isAsset
-	 *
-	 * @param boolean $isAsset
-	 *
-	 * @return AttributeElement $this
-	 */
-	public function setIsAsset($isAsset)
-	{
-
-		$this->isAsset = $isAsset;
-
-		return $this;
-
-	}
-
 
 }

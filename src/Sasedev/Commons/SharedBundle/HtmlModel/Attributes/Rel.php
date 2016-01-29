@@ -1,21 +1,26 @@
 <?php
 
-namespace Sasedev\Commons\SharedBundle\HtmlModel;
+namespace Sasedev\Commons\SharedBundle\HtmlModel\Attributes;
 
-use Sasedev\Commons\SharedBundle\HtmlModel\AttributeElement;
+use Sasedev\Commons\SharedBundle\HtmlModel\HtmlAttribute;
 
 /**
  *
  * @author sasedev <seif.salah@gmail.com>
  */
-class RelElement extends AttributeElement
+class Rel extends HtmlAttribute
 {
+
 	/**
+	 * Contructor
 	 *
 	 * @param string $value
 	 */
 	public function __construct($value)
 	{
+
 		parent::__construct('rel', $value);
+
 	}
+
 }
