@@ -30,6 +30,8 @@ use Symfony\Component\Validator\Validator;
 class BaseController implements ContainerAwareInterface
 {
 
+	use ContainerAwareTrait;
+
 	/**
 	 *
 	 * @var array $twig_vars
@@ -65,10 +67,6 @@ class BaseController implements ContainerAwareInterface
 	 * @var array $body_scripts
 	 */
 	private $body_scripts = array();
-
-
-
-	use ContainerAwareTrait;
 
 	/**
 	 * Check if a service exist
