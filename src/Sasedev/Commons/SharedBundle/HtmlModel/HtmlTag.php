@@ -63,7 +63,7 @@ class HtmlTag
 	{
 
 		$this->name = $name;
-		$this->attributes = array();
+		$this->attributes = $attributes;
 		$this->self_closing = $self_closing;
 		$this->content = $content;
 
