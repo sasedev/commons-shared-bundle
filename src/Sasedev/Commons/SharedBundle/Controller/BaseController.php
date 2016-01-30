@@ -483,14 +483,16 @@ class BaseController implements ContainerAwareInterface
 	/**
 	 * Add $twig_var;
 	 *
-	 * @param mixed $twig_vars
+	 * @param string $name
+	 *
+	 * @param mixed $value
 	 *
 	 * @return BaseController $this
 	 */
-	public function addTwigVar($twig_var)
+	public function addTwigVar($name, $value = null)
 	{
 
-		$this->twig_vars[] = $twig_var;
+		$this->twig_vars[$name] = $value;
 
 		return $this;
 
