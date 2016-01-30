@@ -108,7 +108,11 @@ class BaseController implements ContainerAwareInterface
 	 */
 	public function getParameter($name)
 	{
-		return $this->container->getParameter($name);
+		try {
+			return $this->container->getParameter($name);
+		} catch (\Exception $e) {
+			return null;
+		}
 	}
 
 	/**
