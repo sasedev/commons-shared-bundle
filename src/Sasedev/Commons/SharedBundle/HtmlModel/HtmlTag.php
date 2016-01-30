@@ -51,10 +51,13 @@ class HtmlTag
 	 */
 	private $append = null;
 
-
-
 	/**
 	 * Contructor
+	 *
+	 * @param string $name
+	 * @param array $attributes
+	 * @param boolean $self_closing
+	 * @param string $content
 	 */
 	public function __construct($name, $attributes = array(), $self_closing = self::SELF_CLOSING, $content = null)
 	{
@@ -253,9 +256,10 @@ class HtmlTag
 	 */
 	public function __toString()
 	{
+
 		$str = "";
 		if (null != $this->prepend) {
-			$str .= $this->prepend;
+			$str .= $this->prepend.PHP_EOL;
 		}
 		$str .= '<';
 		$str .= $this->name;
@@ -265,15 +269,14 @@ class HtmlTag
 		if ($this->self_closing) {
 			$str .= '/>';
 		} else {
-			$str .= '>' . $this->content . '<' . $this->name . '>';
+			$str .= '>' . PHP_EOL . $this->content . PHP_EOL . '<' . $this->name . '>';
 		}
 		if (null != $this->append) {
-			$str .= $this->append;
+			$str .= PHP_EOL.$this->append;
 		}
 
 		return $str;
 
 	}
-
 
 }

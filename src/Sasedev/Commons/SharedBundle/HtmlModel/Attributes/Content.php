@@ -8,7 +8,7 @@ use Sasedev\Commons\SharedBundle\HtmlModel\HtmlAttribute;
  *
  * @author sasedev <seif.salah@gmail.com>
  */
-class Media extends HtmlAttribute
+class Content extends HtmlAttribute
 {
 
 	/**
@@ -19,7 +19,7 @@ class Media extends HtmlAttribute
 	public function __construct($value)
 	{
 
-		parent::__construct('media', $value);
+		parent::__construct('content', $value);
 
 	}
 

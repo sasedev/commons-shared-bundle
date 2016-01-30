@@ -1,20 +1,21 @@
 <?php
 
-namespace Sasedev\Commons\SharedBundle\HtmlModel\Tags;
+namespace Sasedev\Commons\SharedBundle\HtmlModel\Tags\SpecialScripts;
 
+use Sasedev\Commons\SharedBundle\HtmlModel\Attributes\Src;
 use Sasedev\Commons\SharedBundle\HtmlModel\Tags\Script;
 
 /**
  *
  * @author sasedev <seif.salah@gmail.com>
  */
-class JavaScript extends Script
+class Javascript extends Script
 {
 
 	/**
 	 * Constructor
 	 *
-	 * @param string $src
+	 * @param Src|string $src
 	 * @param string $charset
 	 * @param boolean $defer
 	 * @param boolean $async

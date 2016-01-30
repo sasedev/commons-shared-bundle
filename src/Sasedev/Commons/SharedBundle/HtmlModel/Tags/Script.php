@@ -2,12 +2,12 @@
 
 namespace Sasedev\Commons\SharedBundle\HtmlModel\Tags;
 
-use Sasedev\Commons\SharedBundle\HtmlModel\HtmlTag;
 use Sasedev\Commons\SharedBundle\HtmlModel\Attributes\Src;
 use Sasedev\Commons\SharedBundle\HtmlModel\Attributes\Type;
 use Sasedev\Commons\SharedBundle\HtmlModel\Attributes\Charset;
 use Sasedev\Commons\SharedBundle\HtmlModel\Attributes\Defer;
 use Sasedev\Commons\SharedBundle\HtmlModel\Attributes\Async;
+use Sasedev\Commons\SharedBundle\HtmlModel\HtmlTag;
 
 /**
  *
@@ -31,7 +31,7 @@ class Script extends HtmlTag
 	/**
 	 * Constructor
 	 *
-	 * @param string $src
+	 * @param Src|string $src
 	 * @param string $type
 	 * @param string $charset
 	 * @param boolean $defer
@@ -40,9 +40,14 @@ class Script extends HtmlTag
 	 */
 	public function __construct($src = null, $type = null, $charset = null, $defer = false, $async = false, $content = null)
 	{
+
 		$attributes = array();
 		if (null != $src) {
-			$srcAttribute = new Src($src);
+			if ($src instanceof Src) {
+				$srcAttribute = $src;
+			} else {
+				$srcAttribute = new Src($src);
+			}
 			$attributes[] = $srcAttribute;
 		}
 		if (null != $type) {
@@ -65,4 +70,5 @@ class Script extends HtmlTag
 		parent::__construct(self::NAME, $attributes, self::SELF_CLOSING, $content);
 
 	}
+
 }

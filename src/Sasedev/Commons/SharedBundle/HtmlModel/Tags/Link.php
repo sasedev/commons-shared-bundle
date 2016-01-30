@@ -25,6 +25,8 @@ class Link extends HtmlTag
 
 	/**
 	 * Contructor
+	 *
+	 * @param array $attributes
 	 */
 	public function __construct($attributes = array())
 	{

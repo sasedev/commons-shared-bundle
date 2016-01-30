@@ -6,8 +6,7 @@
 		"sasedev",
 		"shared"
 	],
-	"authors" : [
-		{
+	"authors" : [{
 			"name" : "Salah Abdelkader Seif Eddine",
 			"email" : "seif.salah@gmail.com"
 		}
@@ -38,7 +37,7 @@
 	},
 	"extra" : {
 		"branch-alias" : {
-			"dev-master" : "1.1.x-dev"
+			"dev-master" : "1.2.x-dev"
 		}
 	}
 }

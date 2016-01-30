@@ -22,6 +22,7 @@ class HtmlAttribute
 	private $value;
 
 	/**
+	 * Contructor
 	 *
 	 * @param string $key
 	 * @param string $value
