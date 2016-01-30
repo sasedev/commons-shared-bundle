@@ -17,7 +17,7 @@
 		{% if script.append is not empty %}{{ script.append|raw }}{% endif %}
 {%endfor%}{%endif%}{%endblock head_scripts%}
 {%block page_title%}
-		<title>{%block page_title_content%}{%if page_title is defined%}{{page_title|raw}}{%endblock page_title_content%}</title>
+		<title>{%block page_title_content%}{%if page_title is defined%}{{page_title|raw}}{%endif%}{%endblock page_title_content%}</title>
 {%endblock page_title%}
 {%endblock head_content%}
 	</head>{%endblock head%}{%block body%}
