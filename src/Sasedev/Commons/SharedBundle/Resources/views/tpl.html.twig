@@ -3,17 +3,17 @@
 	<head>{%block head_content%}{%block head_metas%}
 {%if head_metas is defined%}{%for meta in head_metas%}
 		{% if meta.prepend is not empty %}{{ meta.prepend|raw }}{% endif %}
-		<meta {%for element in meta.elements%}{{element.key}}="{{element.value}}" {% endfor %}/>
+		<meta {%for attribute in meta.attributes%}{{attribute.key}}="{{attribute.value}}" {% endfor %}/>
 		{% if meta.append is not empty %}{{ meta.append|raw }}{% endif %}
 {%endfor%}{%endif%}{%endblock head_metas%}
 {%block head_links%}{%if head_links is defined%}{%for link in head_links%}
 		{% if link.prepend is not empty %}{{ link.prepend|raw }}{% endif %}
-		<link {%for element in link.elements%}{{element.key}}="{%if element.isAsset is defined and element.isAsset%}{{absolute_url(asset(element.value))}}{%else%}{{element.value}}{%endif%}" {% endfor %}/>
+		<link {%for attribute in link.attributes%}{{attribute.key}}="{%if attribute.isAsset is defined and attribute.isAsset%}{{absolute_url(asset(attribute.value))}}{%else%}{{attribute.value}}{%endif%}" {% endfor %}/>
 		{% if link.append is not empty %}{{ link.append|raw }}{% endif %}
 {%endfor%}{%endif%}{%endblock head_links%}
 {%block head_scripts%}{%if head_scripts is defined%}{%for script in head_scripts%}
 		{% if script.prepend is not empty %}{{ script.prepend|raw }}{% endif %}
-		<script {%for element in script.elements%}{{element.key}}="{%if element.isAsset is defined and element.isAsset%}{{absolute_url(asset(element.value))}}{%else%}{{element.value}}{%endif%}" {% endfor %}>{% if script.content is not empty %}{{ script.content|raw }}{% endif %}</script>
+		<script {%for attribute in script.attributes%}{{attribute.key}}="{%if attribute.isAsset is defined and attribute.isAsset%}{{absolute_url(asset(attribute.value))}}{%else%}{{attribute.value}}{%endif%}" {% endfor %}>{% if script.content is not empty %}{{ script.content|raw }}{% endif %}</script>
 		{% if script.append is not empty %}{{ script.append|raw }}{% endif %}
 {%endfor%}{%endif%}{%endblock head_scripts%}
 {%block page_title%}
@@ -26,7 +26,7 @@
 {%endblock body_content_main%}
 {%block body_scripts%}{%if body_scripts is defined%}{%for script in body_scripts%}
 		{% if script.prepend is not empty %}{{ script.prepend|raw }}{% endif %}
-		<script {%for element in script.elements%}{{element.key}}="{%if element.isAsset is defined and element.isAsset%}{{absolute_url(asset(element.value))}}{%else%}{{element.value}}{%endif%}" {% endfor %}>{% if script.content is not empty %}{{ script.content|raw }}{% endif %}</script>
+		<script {%for attribute in script.attributes%}{{attribute.key}}="{%if attribute.isAsset is defined and attribute.isAsset%}{{absolute_url(asset(attribute.value))}}{%else%}{{attribute.value}}{%endif%}" {% endfor %}>{% if script.content is not empty %}{{ script.content|raw }}{% endif %}</script>
 		{% if script.append is not empty %}{{ script.append|raw }}{% endif %}
 {%endfor%}{%endif%}{%endblock body_scripts%}
 {%endblock body_content%}
