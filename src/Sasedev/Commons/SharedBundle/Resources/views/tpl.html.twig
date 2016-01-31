@@ -7,7 +7,7 @@
 {%block head_metas%}
 {%if head_metas is defined%}
 		{%for meta in head_metas%}{% if meta.prepend is not empty %}{{ meta.prepend|raw }}{% endif %}
-		<meta {%for attribute in meta.attributes%}{{attribute.key}}="{{attribute.value}}" {% endfor %}/>
+		<meta{%for attribute in meta.attributes%} {{attribute.key}}="{{attribute.value}}"{% endfor %}/>
 		{% if meta.append is not empty %}{{ meta.append|raw }}{% endif %}
 {%endfor%}
 {%endif%}
@@ -15,7 +15,7 @@
 {%block head_links%}
 {%if head_links is defined%}
 		{%for link in head_links%}{% if link.prepend is not empty %}{{ link.prepend|raw }}{% endif %}
-		<link {%for attribute in link.attributes%}{{attribute.key}}="{%if attribute.isAsset is defined and attribute.isAsset%}{{absolute_url(asset(attribute.value))}}{%else%}{{attribute.value}}{%endif%}" {% endfor %}/>
+		<link{%for attribute in link.attributes%} {{attribute.key}}="{%if attribute.isAsset is defined and attribute.isAsset%}{{absolute_url(asset(attribute.value))}}{%else%}{{attribute.value}}{%endif%}"{% endfor %} />
 		{% if link.append is not empty %}{{ link.append|raw }}{% endif %}
 {%endfor%}
 {%endif%}
@@ -23,10 +23,17 @@
 {%block head_scripts%}
 {%if head_scripts is defined%}
 		{%for script in head_scripts%}{% if script.prepend is not empty %}{{ script.prepend|raw }}{% endif %}
-		<script {%for attribute in script.attributes%}{{attribute.key}}="{%if attribute.isAsset is defined and attribute.isAsset%}{{absolute_url(asset(attribute.value))}}{%else%}{{attribute.value}}{%endif%}" {% endfor %}>{% if script.content is not empty %}{{ script.content|raw }}{% endif %}</script>
+		<script{%for attribute in script.attributes%} {{attribute.key}}="{%if attribute.isAsset is defined and attribute.isAsset%}{{absolute_url(asset(attribute.value))}}{%else%}{{attribute.value}}{%endif%}"{% endfor %}>{% if script.content is not empty %}{{ script.content|raw }}{% endif %}</script>
 		{% if script.append is not empty %}{{ script.append|raw }}{% endif %}
 {%endfor%}{%endif%}
 {%endblock head_scripts%}
+{%block head_styles%}
+{%if head_styles is defined%}
+		{%for style in head_styles%}{% if style.prepend is not empty %}{{ style.prepend|raw }}{% endif %}
+		<style{%for attribute in style.attributes%} {{attribute.key}}="{{attribute.value}}"{% endfor %}>{% if style.content is not empty %}{{ style.content|raw }}{% endif %}</style>
+		{% if style.append is not empty %}{{ style.append|raw }}{% endif %}
+{%endfor%}{%endif%}
+{%endblock head_styles%}
 {%block page_title%}
 		<title>{%block page_title_content%}{%if page_title is defined%}{{page_title|raw}}{%endif%}{%endblock page_title_content%}</title>
 {%endblock page_title%}
@@ -38,9 +45,11 @@
 {%block body_content_main%}
 {%endblock body_content_main%}
 {%block body_scripts%}{%if body_scripts is defined%}{%for script in body_scripts%}
-		{% if script.prepend is not empty %}{{ script.prepend|raw }}{% endif %}
-		<script {%for attribute in script.attributes%}{{attribute.key}}="{%if attribute.isAsset is defined and attribute.isAsset%}{{absolute_url(asset(attribute.value))}}{%else%}{{attribute.value}}{%endif%}" {% endfor %}>{% if script.content is not empty %}{{ script.content|raw }}{% endif %}</script>
-		{% if script.append is not empty %}{{ script.append|raw }}{% endif %}
+		{% if script.prepend is not empty %}{{ script.prepend|raw }}
+		{% endif %}
+		<script{%for attribute in script.attributes%} {{attribute.key}}="{%if attribute.isAsset is defined and attribute.isAsset%}{{absolute_url(asset(attribute.value))}}{%else%}{{attribute.value}}{%endif%}"{% endfor %}>{% if script.content is not empty %}{{ script.content|raw }}{% endif %}</script>
+		{% if script.append is not empty %}{{ script.append|raw }}
+		{% endif %}
 {%endfor%}{%endif%}
 {%endblock body_scripts%}
 {%endblock body_content%}

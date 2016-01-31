@@ -13,6 +13,10 @@ use Symfony\Component\Security\Core\Authorization\AuthorizationChecker;
 use Symfony\Component\Translation\Translator;
 use Symfony\Component\Validator\Validator;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Sasedev\Commons\SharedBundle\HtmlModel\Tags\Meta;
+use Sasedev\Commons\SharedBundle\HtmlModel\Tags\Link;
+use Sasedev\Commons\SharedBundle\HtmlModel\Tags\Script;
+use Sasedev\Commons\SharedBundle\HtmlModel\Tags\Style;
 
 /**
  * The Default BaseController
@@ -45,6 +49,12 @@ class BaseController extends Controller
 	 * @var array $head_scripts
 	 */
 	private $head_scripts = array();
+
+	/**
+	 *
+	 * @var array $head_scripts
+	 */
+	private $head_styles = array();
 
 	/**
 	 *
@@ -253,6 +263,21 @@ class BaseController extends Controller
 	}
 
 	/**
+	 * Check if a string starts with a prefix
+	 *
+	 * @param string $string
+	 * @param string $prefix
+	 *
+	 * @return boolean
+	 */
+	public function startswith($string, $prefix)
+	{
+
+		return strpos($string, $prefix) === 0;
+
+	}
+
+	/**
 	 * Check if a string ends with a suffix
 	 *
 	 * @param string $string
@@ -441,11 +466,11 @@ class BaseController extends Controller
 	/**
 	 * Add $head_meta;
 	 *
-	 * @param mixed $head_meta
+	 * @param Meta $head_meta
 	 *
 	 * @return BaseController $this
 	 */
-	public function addHeadMeta($head_meta)
+	public function addHeadMeta(Meta $head_meta)
 	{
 
 		$this->head_metas[] = $head_meta;
@@ -489,11 +514,11 @@ class BaseController extends Controller
 	/**
 	 * Add $head_link;
 	 *
-	 * @param mixed $head_link
+	 * @param Link $head_link
 	 *
 	 * @return BaseController $this
 	 */
-	public function addHeadLink($head_link)
+	public function addHeadLink(Link $head_link)
 	{
 
 		$this->head_links[] = $head_link;
@@ -537,16 +562,64 @@ class BaseController extends Controller
 	/**
 	 * Add $head_script;
 	 *
-	 * @param mixed $head_script
+	 * @param Script $head_script
 	 *
 	 * @return BaseController $this
 	 */
-	public function addHeadScript($head_script)
+	public function addHeadScript(Script $head_script)
 	{
 
 		$this->head_scripts[] = $head_script;
 
 		$this->twig_vars['head_scripts'] = $this->head_scripts;
+
+		return $this;
+
+	}
+
+	/**
+	 * Get $head_styles
+	 *
+	 * @return array
+	 */
+	public function getHeadStyles()
+	{
+
+		return $this->head_styles;
+
+	}
+
+	/**
+	 * Set $head_styles
+	 *
+	 * @param array $head_styles
+	 *
+	 * @return BaseController $this
+	 */
+	public function setHeadStyles($head_styles)
+	{
+
+		$this->head_styles = $head_styles;
+
+		$this->twig_vars['head_styles'] = $this->head_styles;
+
+		return $this;
+
+	}
+
+	/**
+	 * Add $head_style;
+	 *
+	 * @param Style $head_style
+	 *
+	 * @return BaseController $this
+	 */
+	public function addHeadStyle(Style $head_style)
+	{
+
+		$this->head_styles[] = $head_style;
+
+		$this->twig_vars['head_styles'] = $this->head_styles;
 
 		return $this;
 
@@ -611,11 +684,11 @@ class BaseController extends Controller
 	/**
 	 * Add $body_script;
 	 *
-	 * @param mixed $body_script
+	 * @param Script $body_script
 	 *
 	 * @return BaseController $this
 	 */
-	public function addBodyScript($body_script)
+	public function addBodyScript(Script $body_script)
 	{
 
 		$this->body_scripts[] = $body_script;
