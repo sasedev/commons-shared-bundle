@@ -1,0 +1,12 @@
+sasedev_commons_shared_vfs_tmp_files:
+    path:  /tmpVfs{file}
+    defaults: { _controller: "SasedevCommonsBundle:Vfs:tempfile", file: null }
+    requirements:
+        file:  ".*"
+
+sasedev_commons_shared_vfs_files:
+    path:  /Vfs{file}
+    defaults: { _controller: "SasedevCommonsBundle:Vfs:file", file: null }
+    requirements:
+        file:  ".*"
+

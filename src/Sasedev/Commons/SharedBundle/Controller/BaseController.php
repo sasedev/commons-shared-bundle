@@ -1,6 +1,6 @@
 <?php
 
-namespace Sasedev\Commons\SharedBundle\Controller;
+namespace Sasedev\ResBundle\Controller;
 
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Bridge\Monolog\Logger;
@@ -627,3 +627,4 @@ class BaseController extends Controller
 	}
 
 }
+

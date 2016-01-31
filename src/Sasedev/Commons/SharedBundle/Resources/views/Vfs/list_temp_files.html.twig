@@ -1,0 +1,11 @@
+{% extends 'SasedevResBundle::tpl.html.twig' %}
+{%block body_content_main%}
+		<h1>{{ pagetitle|raw }}</h1>
+		<hr/>
+		<a href="..">..</a><br/>
+		{% for filepath, filename in fs %}
+		<a href="{{ path('sasedev_commons_shared_vfs_tmp_files', {'file': '/'}) }}{{ filepath }}">{{ filename }}</a><br/>
+		{% endfor %}
+		<br/>
+		<hr/>
+{%endblock body_content_main%}
