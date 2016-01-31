@@ -1,6 +1,6 @@
 <?php
 
-namespace Sasedev\ResBundle\Controller;
+namespace Sasedev\Commons\SharedBundle\Controller;
 
 use Gaufrette\Adapter\Cache as CacheAdapter;
 use Gaufrette\Adapter\Local as LocalAdapter;
@@ -11,6 +11,7 @@ use Sasedev\Commons\SharedBundle\HtmlModel\Tags\SpecialLinks\Icon;
 use Sasedev\Commons\SharedBundle\HtmlModel\Attributes\Href;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Annotation\Route;
 
 /**
  *
@@ -26,8 +27,6 @@ class VfsController extends BaseController
 	 */
 	public function __construct()
 	{
-		//parent:: __construct();
-
 		$metaCharset = new CharsetMeta('utf-8');
 
 		$this->addHeadMeta($metaCharset);
@@ -41,8 +40,6 @@ class VfsController extends BaseController
 
 		$this->addHeadLink($favicon);
 
-		//$this->setPageTitle($this->getParameter('sitename'));
-
 		$this->addTwigVar('menu_active', 'home');
 
 	}
@@ -54,6 +51,8 @@ class VfsController extends BaseController
 	 *
 	 * @throws NotFoundHttpException
 	 * @return Response
+	 *
+	 * @Route(name="sasedev_commons_shared_vfs_files", path="/Vfs{file}", requirements={"file" = ".*"}, defaults={"file" = null})
 	 */
 	public function fileAction($file = null)
 	{
@@ -130,6 +129,8 @@ class VfsController extends BaseController
 	 *
 	 * @throws NotFoundHttpException
 	 * @return Response
+	 *
+	 * @Route(name="sasedev_commons_shared_vfs_tmp_files", path="/tmpVfs{file}", requirements={"file" = ".*"}, defaults={"file" = null})
 	 */
 	public function tempfileAction($file = null)
 	{

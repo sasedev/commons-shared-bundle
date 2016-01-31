@@ -1,6 +1,6 @@
 <?php
 
-namespace Sasedev\ResBundle\Controller;
+namespace Sasedev\Commons\SharedBundle\Controller;
 
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Bridge\Monolog\Logger;

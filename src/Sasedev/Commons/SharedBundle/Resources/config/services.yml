@@ -2,7 +2,3 @@ parameters:
     adapter_cache_dir:         "%kernel.root_dir%/../var/cache/%kernel.environment%/filesystem"
     adapter_tmp_files:         "%kernel.root_dir%/../var/TempFiles"
     adapter_files:             "%kernel.root_dir%/../var/Files"
-services:
-#    sasedev_commons_shared.example:
-#        class: Sasedev\Commons\SharedBundle\Example
-#        arguments: [@service_id, "plain_value", %parameter%]
