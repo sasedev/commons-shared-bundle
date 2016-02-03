@@ -35,7 +35,7 @@
 {%endfor%}{%endif%}
 {%endblock head_styles%}
 {%block page_title%}
-		<title>{%block page_title_content%}{%if page_title is defined%}{{page_title|raw}}{%endif%}{%endblock page_title_content%}</title>
+		<title>{%block page_title_content%}{%if browser_page_title is defined%}{{browser_page_title|raw}}{%endif%}{%endblock page_title_content%}</title>
 {%endblock page_title%}
 {%endblock head_content%}
 	</head>

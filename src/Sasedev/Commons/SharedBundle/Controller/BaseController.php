@@ -58,6 +58,12 @@ class BaseController extends Controller
 
 	/**
 	 *
+	 * @var string $browser_page_title
+	 */
+	private $browser_page_title;
+
+	/**
+	 *
 	 * @var string $page_title
 	 */
 	private $page_title;
@@ -627,7 +633,33 @@ class BaseController extends Controller
 
 	/**
 	 *
-	 * @return unknown_type
+	 * @return string
+	 */
+	public function getBrowserPageTitle()
+	{
+
+		return $this->browser_page_title;
+
+	}
+
+	/**
+	 *
+	 * @param string $page_title
+	 */
+	public function setBrowserPageTitle($title)
+	{
+
+		$this->browser_page_title = $title;
+
+		$this->twig_vars['browser_page_title'] = $this->browser_page_title;
+
+		return $this;
+
+	}
+
+	/**
+	 *
+	 * @return string
 	 */
 	public function getPageTitle()
 	{
@@ -640,10 +672,10 @@ class BaseController extends Controller
 	 *
 	 * @param string $page_title
 	 */
-	public function setPageTitle($page_title)
+	public function setPageTitle($title)
 	{
 
-		$this->page_title = $page_title;
+		$this->page_title = $title;
 
 		$this->twig_vars['page_title'] = $this->page_title;
 
