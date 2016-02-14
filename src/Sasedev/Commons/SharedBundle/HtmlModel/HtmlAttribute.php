@@ -6,7 +6,7 @@ namespace Sasedev\Commons\SharedBundle\HtmlModel;
  *
  * @author sasedev <seif.salah@gmail.com>
  */
-class HtmlAttribute
+class HtmlAttribute implements \JsonSerializable
 {
 
 	/**
@@ -97,7 +97,17 @@ class HtmlAttribute
 	 */
 	public function __toString()
 	{
-		return $this->key.'="'.$this->value.'"';
+
+		return $this->key . '="' . $this->value . '"';
+
+	}
+
+	// function called when encoded with json_encode
+	public function jsonSerialize()
+	{
+
+		return get_object_vars($this);
+
 	}
 
 }

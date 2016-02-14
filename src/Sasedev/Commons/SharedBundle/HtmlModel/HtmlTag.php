@@ -6,7 +6,7 @@ namespace Sasedev\Commons\SharedBundle\HtmlModel;
  *
  * @author sasedev <seif.salah@gmail.com>
  */
-class HtmlTag
+class HtmlTag implements \JsonSerializable
 {
 
 	/**
@@ -276,6 +276,14 @@ class HtmlTag
 		}
 
 		return $str;
+
+	}
+
+	// function called when encoded with json_encode
+	public function jsonSerialize()
+	{
+
+		return get_object_vars($this);
 
 	}
 
